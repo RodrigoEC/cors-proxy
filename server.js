@@ -19,7 +19,7 @@ app.all('*', function (req, res, next) {
         // CORS Preflight
         res.send();
     } else {
-        request({ url: req.url.substring(1,), method: req.method, json: req.body, headers: {'Authorization': req.header('Authorization'), 'Notion-Version': req.header('Notion-Version')} },
+        request({ url: req.url.substring(1,), mode: 'no-cors', method: req.method, json: req.body, headers: {'Authorization': req.header('Authorization'), 'Notion-Version': req.header('Notion-Version')} },
             function (error, response, body) {
                 if (error) {
                     console.error('error: ' + response.statusCode)
