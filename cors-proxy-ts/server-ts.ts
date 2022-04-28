@@ -46,7 +46,7 @@ export class Server {
           res.status(500).send({ error: 'There is no Target-Endpoint header in the request' });
           return;
         }
-        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: { 'Authorization': req.header('Authorization') } },
+        request({ url: req.url.substring(1, ), method: req.method, json: req.body, headers: { 'Authorization': req.header('Authorization'), 'Notion-Version': req.header('Notion-Version') } }, function (error, response, body) {
           function (error, response, body) {
             if (error) {
               console.error('error: ' + response.statusCode)
